@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Button, FlatList, TouchableOpacity, SafeAreaView, ScrollView } from 'react-native';
 import styled from "styled-components";
 // import {  } from 'react-native-gesture-handler';
 
@@ -7,8 +7,6 @@ import { CATEGORIES } from '../data/dummy-data';
 import Colors from '../constant/Colors';
 
 const CategoriesScreen = props => {
-
-  console.log(Colors)
 
   const renderGridItem = (itemData) => {
     return (
@@ -28,16 +26,20 @@ const CategoriesScreen = props => {
   }
 
   return (
-    <Screen>
-      <TitleBar>
-        <Avatar source={require("../assets/images/hunter.gif")}></Avatar>
-        <TitleAndName>
-          <Title>Welcome back,</Title>
-          <Name>Meng</Name>
-        </TitleAndName>
-      </TitleBar>
-      <FlatList data = {CATEGORIES} renderItem = {renderGridItem}  numColumns = {2} keyExtractor = {(item,index) => item.id} />
-    </Screen>
+    <SafeAreaView>
+      <ScrollView>
+        <Screen>
+          <TitleBar>
+            <Avatar source={require("../assets/images/hunter.gif")}></Avatar>
+            <TitleAndName>
+              <Title>Welcome back,</Title>
+              <Name>Meng</Name>
+            </TitleAndName>
+          </TitleBar>
+          <FlatList data = {CATEGORIES} renderItem = {renderGridItem}  numColumns = {2} keyExtractor = {(item,index) => item.id} />
+        </Screen>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
